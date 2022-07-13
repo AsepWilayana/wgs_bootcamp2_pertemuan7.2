@@ -34,7 +34,7 @@ const save_context = (name, email, mobile) => {
     };
 
     const contacts = loadContact();
-    let findData = contacts.findIndex(item => item.name == name);
+    let findData = contacts.findIndex(item => item.name == name.toLowerCase());
     //console.log(findData)
     if(findData >= 0){
         console.log('nama sudah ada');
@@ -81,10 +81,10 @@ const listDetail = (name) => {
 
 const Deletedata = (name) => {
     const contacts = loadContact();
-    const findData = contacts.find(item => item.name == name);
+    const findData = contacts.find(item => item.name == name.toLowerCase());
 
     if (findData !== undefined){
-        const deletedData = contacts.filter(item => item.name !== name);
+        const deletedData = contacts.filter(item => item.name !== name.toLowerCase());
         
         fs. writeFileSync('data/contacts.json',JSON.stringify(deletedData));
         console.log(findData);
